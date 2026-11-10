@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Central de Conversas Htech | Atendimento multicanal para empresas</title>
-<meta name="description" content="Central de Conversas Htech: WhatsApp, Instagram e Messenger em uma só tela, com vários atendentes no mesmo número. Adicionais de CRM, Chatbot e Agente de IA. Agende uma demonstração." />
+<meta name="description" content="Central de Conversas Htech: WhatsApp, Instagram e Messenger em uma só tela, com vários atendentes no mesmo número. Chatbot incluso e adicionais de CRM e Agente de IA. Teste grátis por 7 dias." />
 <meta property="og:title" content="Central de Conversas Htech | Todo o atendimento da sua empresa em uma só tela" />
 <meta property="og:description" content="WhatsApp, Instagram e Messenger reunidos, com a equipe toda no mesmo número." />
 <meta name="theme-color" content="#0B1F5E" />
@@ -143,7 +143,7 @@
     background: #fff; color: var(--text);
     border-radius: 20px; padding: 28px;
     box-shadow: 0 30px 70px -25px rgba(0,0,0,.6);
-    position: sticky; top: 24px;
+    position: sticky; top: 84px;
   }
   .form-card h2 { font-size: 22px; line-height: 1.2; font-weight: 800; margin-bottom: 6px; }
   .form-card .sub { color: var(--muted); font-size: 14.5px; margin-bottom: 20px; }
@@ -342,7 +342,7 @@
   @media (max-width: 980px) {
     .hero { padding: 100px 0 56px; }
     .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-    .form-card { position: static; }
+    .form-card { position: relative; }
     .strip .wrap { grid-template-columns: 1fr 1fr; }
     .strip .item:nth-child(3) { border-left: 0; }
     .strip .item:nth-child(n+3) { border-top: 1px solid var(--line); }
@@ -409,7 +409,7 @@
   .addons-sec .sec-head h2 { color: #fff; }
   .addons-sec .sec-head p { color: #c9d6f2; }
   .addons-sec .sec-head .tag { color: var(--sky); }
-  .addons { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .addons { position: relative; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
   .addon {
     display: flex; flex-direction: column;
     background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
@@ -477,30 +477,241 @@
   .vs li { display: flex; gap: 10px; font-size: 15px; }
   .vs li svg { flex: none; margin-top: 3px; color: var(--brand); }
 
+  /* Black Friday: faixa no topo (fixa ao rolar) */
+  .bbar {
+    position: sticky; top: 0; z-index: 60; color: #fff; overflow: hidden;
+    background: linear-gradient(90deg, #8f0910 0%, #e3141d 50%, #8f0910 100%);
+    border-bottom: 2px solid #FFD400;
+    box-shadow: 0 6px 24px -6px rgba(227,20,29,.75);
+    font-size: 16px; line-height: 1.35;
+  }
+  .bbar::after { /* brilho passando */
+    content: ""; position: absolute; top: 0; bottom: 0; width: 140px; left: -160px;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.28), transparent);
+    animation: shine 3.8s ease-in-out infinite; pointer-events: none;
+  }
+  @keyframes shine { 0% { left: -160px; } 55%, 100% { left: calc(100% + 160px); } }
+  .bbar .wrap { max-width: none; position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 16px; padding-top: 12px; padding-bottom: 12px; flex-wrap: wrap; }
+  .bbar .pill {
+    flex: none; background: #0b0b0b; color: #fff; font-weight: 900; font-size: 13.5px; letter-spacing: .12em;
+    padding: 7px 12px; border-radius: 7px; box-shadow: 0 0 0 2px rgba(255,212,0,.55);
+  }
+  .bbar .pill b { color: #FFD400; }
+  .bbar p { font-weight: 600; }
+  .bbar p strong { color: #FFD400; font-weight: 900; font-size: 1.08em; }
+  .bbar .count { flex: none; display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: #ffe2e3; }
+  .bbar .count .seg {
+    display: inline-flex; flex-direction: column; align-items: center; min-width: 40px;
+    background: #0b0b0b; border-radius: 7px; padding: 4px 6px 3px; line-height: 1;
+  }
+  .bbar .count .seg b { color: #FFD400; font-size: 17px; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .bbar .count .seg i { font-style: normal; font-size: 9.5px; letter-spacing: .06em; color: #cfcfcf; margin-top: 2px; text-transform: uppercase; }
+  .bbar a {
+    flex: none; background: #FFD400; color: #141414; font-weight: 800; font-size: 14.5px; text-decoration: none;
+    padding: 9px 16px; border-radius: 999px; box-shadow: 0 6px 16px -6px rgba(0,0,0,.5);
+    transition: transform .15s, background .15s;
+  }
+  .bbar a:hover { background: #fff; transform: translateY(-1px); }
+  @media (max-width: 1340px) { .bbar a { display: none; } }
+  @media (max-width: 1060px) { .bbar .count > span:first-child { display: none; } .bbar { font-size: 15px; } }
+
+  .black-tag {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px;
+    background: linear-gradient(90deg, #c50f17, #e3141d); color: #fff; font-size: 14px; font-weight: 700;
+    padding: 6px 14px 6px 6px; border-radius: 999px;
+    box-shadow: 0 8px 20px -8px rgba(227,20,29,.9);
+    animation: glow 2.2s ease-in-out infinite;
+  }
+  @keyframes glow { 0%,100% { box-shadow: 0 0 0 0 rgba(227,20,29,.45), 0 8px 20px -8px rgba(227,20,29,.9); } 50% { box-shadow: 0 0 0 7px rgba(227,20,29,0), 0 8px 20px -8px rgba(227,20,29,.9); } }
+  .black-tag span { white-space: nowrap; background: #0b0b0b; color: #FFD400; font-size: 11px; font-weight: 900; letter-spacing: .08em; padding: 4px 9px; border-radius: 999px; }
+  .black-tag strong { color: #FFD400; font-weight: 900; }
+  .black-tag em, .black-tag i { font-style: normal; }
+  .final .black-tag { font-size: 16px; padding: 8px 18px 8px 8px; margin-bottom: 18px; }
+
+  /* fita de canto no formulário */
+  .form-card { overflow: hidden; scroll-margin-top: 90px; }
+  .ribbon {
+    position: absolute; top: 22px; right: -46px; transform: rotate(45deg);
+    width: 180px; text-align: center; padding: 7px 0 6px;
+    background: linear-gradient(90deg, #b30d15, #e3141d); color: #fff; line-height: 1.05;
+    box-shadow: 0 6px 14px -4px rgba(0,0,0,.35); border-top: 1px solid #FFD400; border-bottom: 1px solid #FFD400;
+  }
+  .ribbon b { display: block; color: #FFD400; font-size: 17px; font-weight: 900; }
+  .ribbon small { font-size: 9.5px; font-weight: 800; letter-spacing: .14em; }
+  .form-card .form-head { padding-right: 56px; }
+
+  /* Como funciona: 4 passos + passo extra */
+  .steps-4 { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .steps-4 .step { padding: 26px 22px 24px; }
+  .steps-4 .step h3 { font-size: 17.5px; line-height: 1.3; }
+  .steps-4 .step p { font-size: 14.5px; }
+  .steps-4 .step:not(:last-child)::after { right: -20px; width: 20px; }
+  .step-done { border: 2px solid var(--brand); box-shadow: var(--shadow); }
+  .step-done .num { background: linear-gradient(135deg, #1fae63, #3ddc84); }
+  @media (max-width: 1100px) {
+    .steps-4 { grid-template-columns: repeat(2, 1fr); }
+    .steps-4 .step::after { display: none; }
+  }
+  @media (max-width: 620px) {
+    .steps-4 { grid-template-columns: 1fr; }
+  }
+
+  /* Passo extra: card escuro com diagrama de integração */
+  .step-extra {
+    position: relative; margin-top: 44px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center;
+    padding: 40px; border-radius: 24px; color: #fff;
+    background:
+      radial-gradient(520px 320px at 100% 0%, rgba(90,176,255,.25), transparent 60%),
+      linear-gradient(135deg, #0B1F5E 0%, #0a1846 50%, #071433 100%);
+    box-shadow: 0 30px 60px -25px rgba(4,12,50,.6), inset 0 1px 0 rgba(255,255,255,.12);
+  }
+  .step-extra::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: .07;
+    background-image: linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px);
+    background-size: 36px 36px;
+    -webkit-mask-image: radial-gradient(70% 80% at 75% 50%, #000, transparent); mask-image: radial-gradient(70% 80% at 75% 50%, #000, transparent);
+  }
+  .step-extra::before {
+    content: ""; position: absolute; top: -46px; left: 50%; width: 2px; height: 44px;
+    background: repeating-linear-gradient(180deg, var(--sky) 0 6px, transparent 6px 10px);
+  }
+  .ex-text, .ex-diagram { position: relative; z-index: 1; }
+  .ex-badge {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+    background: #fff; color: var(--corp); padding: 5px 10px; border-radius: 6px; margin-bottom: 12px;
+  }
+  .step-extra h3 { font-size: 26px; line-height: 1.15; font-weight: 800; margin-bottom: 10px; }
+  .step-extra h3 span { background: linear-gradient(135deg, #fff 10%, #5AB0FF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .step-extra p { color: #c9d6f2; font-size: 15.5px; }
+  .step-extra p strong { color: #fff; }
+  .ex-list { list-style: none; display: grid; gap: 10px; margin-top: 18px; }
+  .ex-list li {
+    display: flex; gap: 12px; align-items: center; font-size: 14.5px; line-height: 1.45; color: rgba(255,255,255,.85);
+    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 10px 14px 10px 10px;
+  }
+  .ex-list b { color: #fff; }
+  .ex-i { flex: none; width: 38px; height: 38px; border-radius: 50%; background: #fff; color: var(--corp); display: grid; place-items: center; }
+  .ex-diagram { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; }
+  .sys { display: grid; gap: 8px; text-align: center; }
+  .sys span {
+    font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 10px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); color: #e3ecff;
+  }
+  .sys small { font-size: 11.5px; color: #9fb4e0; font-weight: 600; letter-spacing: .03em; }
+  .tracks { display: grid; gap: 40px; }
+  .track { position: relative; height: 2px; background: repeating-linear-gradient(90deg, rgba(90,176,255,.6) 0 6px, transparent 6px 11px); }
+  .track em { position: absolute; left: 50%; transform: translateX(-50%); top: -22px; font-style: normal; font-size: 11px; font-weight: 600; color: #9fb4e0; white-space: nowrap; }
+  .track i {
+    position: absolute; top: 50%; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%;
+    background: #5AB0FF; box-shadow: 0 0 0 4px rgba(90,176,255,.25), 0 0 14px #5AB0FF;
+  }
+  .track.in i { animation: go-r 2.4s linear infinite; }
+  .track.out i { background: #3ddc84; box-shadow: 0 0 0 4px rgba(61,220,132,.25), 0 0 14px #3ddc84; animation: go-l 2.4s linear -1.2s infinite; }
+  .track.out { background: repeating-linear-gradient(90deg, rgba(61,220,132,.6) 0 6px, transparent 6px 11px); }
+  .track.in::after, .track.out::before { content: ""; position: absolute; top: -5px; border: 6px solid transparent; }
+  .track.in::after { right: -4px; border-left-color: #5AB0FF; border-right: 0; }
+  .track.out::before { left: -4px; border-right-color: #3ddc84; border-left: 0; }
+  @keyframes go-r { from { left: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } to { left: calc(100% - 10px); opacity: 0; } }
+  @keyframes go-l { from { left: calc(100% - 10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } to { left: 0; opacity: 0; } }
+  .hub {
+    display: grid; justify-items: center; gap: 8px; text-align: center;
+    background: #fff; border-radius: 18px; padding: 18px 16px 14px; min-width: 120px;
+    box-shadow: 0 0 0 6px rgba(90,176,255,.18), 0 20px 40px -12px rgba(10,132,255,.7);
+  }
+  .hub img { width: 54px; height: auto; }
+  .hub strong { color: var(--navy); font-size: 12.5px; font-weight: 800; line-height: 1.2; }
+  @media (max-width: 980px) { .step-extra { grid-template-columns: 1fr; padding: 30px; } }
+  @media (max-width: 620px) {
+    .step-extra { padding: 24px 18px; gap: 26px; }
+    .step-extra h3 { font-size: 22px; }
+    .sys span { font-size: 12px; padding: 7px 10px; }
+    .hub { min-width: 96px; padding: 14px 10px 12px; }
+    .hub img { width: 42px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .track i { animation: none; left: 45%; } }
+
+  /* Diferencial Htech (fim da seção do problema) */
+  .diff {
+    margin-top: 28px; display: flex; gap: 22px; align-items: center;
+    background: #fff; border-radius: var(--radius); padding: 26px 30px;
+    border: 1px solid var(--line); border-left: 5px solid var(--brand); box-shadow: var(--shadow);
+  }
+  .diff .ico { width: 54px; height: 54px; }
+  .diff p { font-size: 17px; color: var(--text); }
+  .diff p strong { color: var(--corp); }
+
+  /* Chatbot incluso (card largo) */
+  .botcard {
+    margin-top: 28px; flex-direction: row; color: #fff;
+    background:
+      radial-gradient(500px 300px at 100% 0%, rgba(90,176,255,.25), transparent 60%),
+      linear-gradient(160deg, var(--navy), var(--navy-deep));
+    border: 0; box-shadow: var(--shadow);
+  }
+  .botcard:hover { transform: none; background:
+      radial-gradient(500px 300px at 100% 0%, rgba(90,176,255,.25), transparent 60%),
+      linear-gradient(160deg, var(--navy), var(--navy-deep)); }
+  .botcard .body { flex: 1.15; padding: 32px; }
+  .botcard .demo { flex: 1; height: auto; min-height: 240px; border-bottom: 0; border-left: 1px solid rgba(255,255,255,.1); padding: 28px; }
+  .botcard .label { background: #3ddc84; color: #06351b; }
+  .botcard ul { grid-template-columns: 1fr 1fr; gap: 10px 18px; }
+  .vs .tag-in, .vs .tag-add { font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 3px 9px; border-radius: 6px; }
+  .vs .tag-in { background: rgba(61,220,132,.18); color: #128a4b; }
+  .vs .tag-add { background: rgba(10,132,255,.12); color: var(--corp); }
+
   @media (max-width: 980px) {
+    .botcard { flex-direction: column-reverse; }
+    .botcard .demo { border-left: 0; border-bottom: 1px solid rgba(255,255,255,.1); }
     .addons { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
     .vs { grid-template-columns: 1fr; }
   }
-  @media (prefers-reduced-motion: reduce) { .float-a, .float-b, .float-c { animation: none; } }
+  @media (max-width: 620px) {
+    .bbar { font-size: 14px; position: relative; }
+    .form-card { scroll-margin-top: 16px; }
+    .form-head .black-tag { font-size: 12.5px; gap: 6px; padding-right: 11px; }
+    .form-head .black-tag span { font-size: 10px; padding: 4px 7px; }
+    .hide-sm { display: none; }
+    .mobile-cta .off { background: #e3141d; color: #FFD400; font-size: 12px; font-weight: 900; padding: 3px 8px; border-radius: 999px; margin-left: 4px; }
+    .bbar .wrap { gap: 8px 10px; padding-top: 10px; padding-bottom: 10px; }
+    .bbar p { flex-basis: 100%; text-align: center; order: 3; }
+    .bbar .pill { font-size: 12px; padding: 6px 10px; }
+    .bbar .count .seg { min-width: 34px; }
+    .bbar .count .seg b { font-size: 15px; }
+    .bbar .count > span:first-child { display: none; }
+    .bbar a { display: none; }
+    .form-card .form-head { padding-right: 44px; }
+    .diff { flex-direction: column; align-items: flex-start; padding: 22px; }
+    .botcard ul { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .float-a, .float-b, .float-c, .bbar::after, .black-tag { animation: none; } }
 </style>
 </head>
 <body>
 
-<!-- ============ TOPO ============ -->
+
+<!-- ============ HERO: vídeo + formulário ============ -->
+<!-- ============ FAIXA BLACK FRIDAY ============ -->
+<div class="bbar js-black" role="note">
+  <div class="wrap">
+    <span class="pill"><b>BLACK</b> FRIDAY</span>
+    <p>Condições ainda mais especiais neste mês: <strong>planos com até 33% de desconto</strong></p>
+    <span class="count" id="bfCount" hidden><span>Termina em</span><span id="bfTime" style="display:inline-flex;gap:5px"></span></span>
+    <a href="#form">Garantir meu desconto →</a>
+  </div>
+</div>
+
+<section class="hero">
 <header class="top">
   <div class="wrap">
     <span class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVsAAACNCAYAAAAZ39lrAAAw40lEQVR42u2debgdVZX2f+vcm3kOGQkJgTBDmGQMKIggNCCCgkhsbQdwAEUGaWwUxTmIdtOiYqMtCoK2oh8KRBEEQUEZBAISphCSEIYQQsg83rO+P3adJ5WTGvau2nXOvZf9Ps95cnNOjbuqVq291rveJapKQCF0AJ3RZxgwEdgdmARsB4wGJtaVgUBnTag1RlqVLmC9CIsFngdeAp4EngaeA5YAG4CN0ScgIKCHQ4KxtUYN2CoyplOAXYCpwM7Rd4PVLCMSWylvdGXz/9YV1gq8CMyOPk8Ac4C5wCtAPVyKgIBgbHsjhgIHAUcDe6vxYMcLDFSoSc7KGjOomm9sk1ZfCyyqKwtqwhPATOAvwNJwaQICgrHtDRgFfEDhAwI7AP2i0IHYbsB2ZMXCUEf/rQPrgIUK1wn8FJgfLlVAQDC2PQ1bRaGBU4D3AiNcjGuasZUcr1YL7CRaZ3nk6V4DPAIsCmGGgIBgbLszRgPHAScCBymMkRJG1iacIP62qwIrgPuBm4BfAy+ESxoQEIxtd8NRwBeBvYBBeDayVRvb+C6i5Npc4GvADRhGQ0BAQDC2bUMnJtF1MfA+oG9ZQ0pOmCAtNquxMIP4NbwzVbm4JvwzGN2AgGBsaVNc9lSFM1XZvSblPVZSYrNZFDAfXm7WunVFa8I84MfAtYREWkBAMLYtxFSFb4mhcg3x4UwmeaaaYmwlI4FWIdYD9wEzgFuBrnDbBwQEY1vZeQLHAP+rhiPrNf6KBZdWc6heWsDrVXu+Lhhe7rkYulhAQEAwtt4xDPgw8B8Y1gE+k122oQDbcEFV3q4CqqyvCVcCl0dhhUBFCQgIxtYLJgNfBd4N9PcVDy3LucUi7OB6XA7H2wXchmFg3B8egYCAYGzLYhvgexj+bEdVhtaW0qU5MQ6tPnYbP5YuVZ6oCe/EUMUCAgKCsS2EccCPgGNdy2vFIh5qq3GQt5xtvLdM+IJ0tgI1YRFwUuThhsRZQADVKln1NuwDXN8wtOqYRYv/LRnLiUOia4vYaQYXN295WwOfd94R5W2swk/UFHZ0hMchICB4trbYHbgKONjXrFxzpvqawyCwkVgs+kLwwFBolPs+B3wAuCc8EgEBwdjmYUQUOjjJ1tCWrd6yKWAQhwSXTTGELc1M3OPQLwP7EXQVAgJCGCEDg4GvY4RkpMLEUqZR1AJlvTbrZXm2kvJdfNs2oQWFcWqEbHYNj0VAQDC2SegLfAU4w+V8ini1UtDbVQt6l2QYySLetloY5YTfpwKXAGPCoxEQEIxtMz4KfATPCR6bpJQLP9bGyCYl4CTFg9Yczzi+nkMMuSOaHUwPj0ZAACFmG8N+GJGVXVppSF0KC3xVhKmFCLmP4gwF6sqaDuF44I7wiAQEBGPbB7gZQ1vy2qpGPOvUehYLdw55FDT4L2MKQh4Kj0lAwBs4jNClXKJwZBUJsTLcXB/0LjJit0mhBUmJ++bFa3OOaWxdOQfHMueAgIDeZWwP6BDOlgLHLyWNnYvBcileKFI8kRaX9SRkI2LKeU8Ij0lAwBvT2I4DPo9pYePspRbxWqWg8ZaSxt5XMYQWfPEIDFE4E6P9GxAQ8AYytg1d2iNc7ZZaeItUaByrCG/YFlJIGe8WDgU+HR6VgIA3VoJsMPA3YI+ixkktjauWMLxZFVxFRMSrEKJxxAaMFvCy8MgEBLwxPNvTMPoHzl6sjaHLYhVITlgiq3BBLeOweQmt5qIHwX/CL2X9PnXl8l4qXBQQEDzbJowBZmMaNnoR2HaRUZQc77IILzevcaS0t3dZMxYCpwB/D49NQEDv9mzPBUb6jrOKIzNBMoRfyhi/tGoxSpTueqa7jceR0xwQENDzjO04Hw+6eOTUOmb1vUzr1VLngAKCNxbb6wDeiemAERAQ0AuNrQBHAzv7iEumGR1tIStBUo5DS7AminCHCxj9vYH9w2MTENA7je0Q4M3k8GqloBG2KRioIvmUJY2Io2KXT26xhXf7ufDYBAT0zgTZVOBOLBJjODZelIo657oIyohHQXN1DFtIjj5vyouoLiZZuSQ8PgEBvcuzPYCUxFiS1KAW9CrxkNwqKnijHsMWVWevohLpL4VHJyCgd3m2HcDDkXfr1EZGPEkO4kka0cUjtV1HHCQefYqj15WXOoRtMcUOAQEBvcCzHaUWRQyuegVlNQXwTM8qUl5r22MsqWNws4CNOHrjHcIwTFPNgICAXmJs35+m7JWWrRfLLgY2oQfxEJqQgvxdn8I0aeebdH6WnSD6YzpkjMboCndE91Lg4AYEpKCzmx/b9CqSVHmdaH30HStqJNVjvFYtvGbJCGVkvaTryjsUhnUIC4EuYL3C0q46SztrzAXmYgTIVwIbw6MWQIjZdtuY7XjgAWBCkXYxYmmA1WPLGlrIaii7bXU0thkUucaidTVGdYPAKmClwhoxZb63AzOBecCa8NgFBGPbvXAS8BNgqKsBaaWx1YoKD3wfk2vfNUdPN3eMo2VeA24Afg48haGPrQ+PYUAwtrQ1lvwV4EIKdM21lTMs6l36NrCuAjniadsurA21DD/YoK7UgadEuFngL8BdwPLwOAYQYrYtR19M8qXmI1nk2/OUFguDZ4VHtKBug1gYVq3IG68JNWBXYOe68kERnhH4aeTxrgiPZQCBjdAyjMTEaqVo3b84sA4o0SuszLyg+Vglg4qVpJugTX+7GMk01kGa2I3kjJE4jlG0r5oIo4FpwA8U/gocGFgNAcHYtg6T8oRn8oyWZnSe9amq5UNWsUznXrVo/pi2nO1+kxgTruXJWdQ92fTVnsC9wLWR0e0THtGAYGypXCh8a190K3FQAWuFdixt0KWVlPOTksUcWd+7FnzIpnvytC7lGjUx+8HhMQ0gxGwrwwQMcb5U1ZVt6a5P46pAVx1WrIdXV8G81+HZpfDSCli7Efp3wogBsO0w2HkUjB8MQ/pBZ6147FgzuMNakZi6i3hNESegJuwocBGmlfr7MeyFgAACG6Ec+mFUvSYAewGXAcOLJmPUki+qDhSxrH2t2QAvLIf5y+CuefDbp2DeUuhSq2QRk4fDqXvAoZNg+xEwdjD07aiGUmajJaElDS5+9SlU4RmB84HfRwUUAQHB2OLGOJgCHI7JTO+LEaceRAtI/WUrv+oKS9fAzGfg7wvh7vkwd2m5Y+wQ2G00HL4dvH0KHDwRBnQWM1J5QjVaQjPCxcvOm1GI/XEvAr4TfVaGRzcgGNt8DAL+BTizrkwWYSwwQAo6cmoZQlCLrre2WN8Fv3kCvnsfPL0EVm3wTy0bNQj2GAMzjoRdRxtDXLZajAJsCx/0OLVommnTRkhMAcQvgPMIeroBwdimSiUOB94FfEFhgrSJ3qOW3XITE2kKi1bCebfCTU+1JpHWrwPOnwafPBCG9nOXa7SpKhPLwoUyIQWbIg1L8fO6wNWYsMKy8AgHBGO7KVSwH3AMRiVqTCs4lFqSlpSE5euMgf36X0zSq5WoCRyzA5x1ABwyCfrU3Bka6lDMkNZS3SaE4FLea1tenRB2qGNKuS/ChBcCAt6wxlaAnYCLMbqnk4vQzHwbTS1YZrquCz57G/zqcVi6tn0Xa9xgOO9gOP1NWybQ1ANLQAsWeRQxtq5x4IQYbz0KKZwLvBIe5YA3orEdAJwNnBN5srWiBrYKD9VVB2HtRvjgjTDzaTt2QdUY0he+fiR8cG/j8WZ5gEVZFkU6PohDeMJjafQG4AcYPm5QEwvgjVLU0A/TBfdm4BvAuCLbL9IlV+zLQ63jkgq8sgrO/QPc0k0MLRj+7mdvgxtmw8Z6soF0qZqzvQZZrdUlozJOq9Wg6AOcAXysh/TTCwjGtjTGAp8B/h9wBJ7ismmdBMq0LJcUTQBJYBx8+15j1OrdrKRs1QY4eyZcO2tzg0uLdB3yNByqbrDZhP515WLgZIKmQkAvN7ZbAVcCn9WULrhUXIqqGd5p0f1c/yhc/TCs7qYtDVesh0vvMUUUdXWXkMxjDmSVMWuKdoLmXA8pIA9pZfyFkV3KZRiedkBArzO2NUwzxoeBkxQGu9C50qb1WmK6KZbqVlkGQIFZL8P5t/rhzwqGPTCgEwb2Mf/2qflxwZ5fBt97AF5dXUyj1lULQizCNmKxnOSEJZJmNlk6C1ETyomYFuvjwmMdQC/SRugLHNWl/Gd0kxfuvSXdTPjlheVw4W2GgVCGqjVxmCm/HTMIRg6AYf0Mg6BL4bU1sGQ1vLzSVJ/Nf734GNwxF657FM492LO3iD0l7oEXTHy7swP2GgtTRm4qwpACGr6aYrBzEn6iJoT1IYFvEsp6A+gdbITpwIy6sk1N3DVnxaJ/mI1QjHiIQ8a3sbEOP3oIPv8nWFOwReHEYfCZaXDQNrDdCOPJiiTIFKrxnBcsg8cWwVfvhucKlvuOHAB3fhB2GFmdgW32irvUGPmrHzaaECvWGQM7YSgcvQOcfzBsNbAYzaxkF42XxfC6Z4XHO6CnG9u3A7/XKAQhjq1p1CPv0lZaUHMUsRr/znsd3vV/8NSrxY7ttKlwxbERB1ayXxrNHtuS1fDZ2+EXjxUbo6N3gF+fmk+bUw8lt3WF//snnHVL+gzgtKlw1Ts20dOKlEu7vmxj+7gfI0gevNsAemLMtg9wIqZ1Sc1W+Fo8tqrJqzASy9hicwxQIk9t5jMwp0DF/fgh8N3j4MrjjYRiTbK7HCRRpUYNhB8cD5ceZVS/XHHvAjOdtzFeWa1y0sYu/turq+Fzd2SHWn7+GFwzK99wZ10jSTkuSYjnNhnz/YGPBzpYQI80tgqH1ZUZCiNck2BlqUU2ibUi+4/vY30XfOc+dz5t3w5jIKdPzdekzXvBdNbgzAPga0fA1kNwpoPd+GT28UvGmIjDcV79sNGIyMNX7oKV6931E8p64YDUlTMwVYwBAT3K2A4W+C8RdrJ1SpP6gOXJG9p0XEgyxHmiKzaUo1vnwMJl7i+Fq06Ad+5sjK4vbvFJu8KH9tlcXhELycf7FpoEHxXS7OoKP37Ybhsr15skoI99qyMLRYRdMOpyneExD+gpxnaYmmKFPcSEIp09Dcmh/qhF3FUKJt+yvLnG910KV/3DzZPqECMMc8publ0WbPbRrxM+vp8RnXHBU6/Cs68Ve2G5VPItWW2v+r2+q1wfNi1ejt0POBXTzy4goNsb237ApwXe5sOY2JZ7+jJaallZ9uLyfCPVjN3HwIf3KXbMNsc0YgB8+Qgjq2iLZetg9uJiIR51FE7Hc6FK3rUq2N5nP+Ck8JgH0AN4todias8rL4OUAh5rFifTpaPAvc+brgvWg1YzkodTRnqv9d9s2T3HmnDCf//d3gjePd943GVbtmtBnYqyBSnqOIOR7N87gDOB75MuVHOdmnZMWcf4DmBFMBd01yanl2GSolnX8GPt7mOXZWxHRDfqNmXbo1Sl+uXSa4wURkNdYc5rRt3LFsP7w4m7ujdpdJV4FExvsqsetOf9PvGqOaealO+okBUe8D0DSROwkRw2RR7Dpa5sXxNOAq5P2f2BmPZM5BTxBHRTCOytcFjOYkPoxmGE9wInaEVTfB+GwCUJlkZr6lKjUesyNZ44FHYc6VevNW0avfVg2MuhAHXJ6uQ4qTqwQHxW9tmMq2SEEtJ42mkGWhOq+erKWd3hYQsgxGwTMAW4WD1ncl0oW0Wn4OJIEVuzARavcjMsb9seBvSpRgi9GQP7miaQtli5PpmWVaSdeSsltIRiYjpWOQHDTDgoPO4B3c3YCnABMUEPF0NUxhvSCh5eyTH0K9ebun4XHDrJjyGyeRn07XArcuiqw2trq6N+FdGJqFL1zdJjH4qZZnaERz6gOxnb/YFjiWhe4iAm4tJZQXMMpEvxggtpvtn4rlxvT2VqYNKwchn3NAqcpBirRlWa7b5WrKtGS9g1XltkeUkYH80xtBaMhg4MM2FUeOQDuoux7Yehyowr6qFpgfW0PaLTgBGfWb3RrWJs1EA/mXfbdTocWxGv2+jX09YWeLZqkewSsrnckj2MewTObUB3MrZjgaNpcdWNFGzE6MOgrO9yEwgf1h8G9S1+foXa1Ei1y6cZLB8vu7KcXKV4zLkJ44C9wiMf0F2M7SHAnnn3dpkpvmv3APX0oEpKuGLdRljrYGy3GgB9OvwyEXzHSrvqxTte2MxQfBdAaEI1oe31FPsedB3AW8MjH0A34Nl2Aqe3K4mgOdxYn40L49tdvNqtI8Ouo92mxnmcYbHR6NXWJLfE5m/HkEbWWKXxnzWH6qcOoYam7w/ChMrWOY7nb4GNlmO4HiND6gsHYAR1JgGTo3+XKzwr8ALwLKZbysvdxKYMU9hfYHuFiQLbAaOBlxTmCSwA5gAP4K8jclkpzb2AwxQmi2nzNSq6zeZHnwXAk8Ajvozt3pFnW0llmOYUPKRVhLkaDs1/4Dbzun4zO7lpYupVGetOQ0sj51dlODvEXyVb6esvdskwXy/pHEwEdouMkwsOqZriF8MkTPPKI4DDFQZZ3huzBf4M/BHzcmilo3QYRvTncEyRiG1fwLsE7gBuBB6tthHzFjgBeB9wjBq2io3cwGvAnzDHfAPwatEwwr+qeet7DR3k9Y/KmsJqiSy6TShizQa46Wm37duW6Kb1zlJHdodvipTtdfQVRoh75Tb3gjreP5LRnDLh00f9ep0+MURhhsJ8hW8rHJdlaBOwm8KZCjcqPKYOeiYlsAtwK8bIX9gwtA44TOFLarpqXINjtWrBZ+MrwDKF3yq8J25oLdYdqXCKmga3czAUWWdjOxJ4p1jE1Gz1B9Kmx1l0J8lYrsx0OCmm9/paOPmXbsmxkQNMq5uizIO0uKQW1JXN0m4gZ/wLF5xo8XJd2+srjv3K0sZNkvd5aDc0tKdH4YALPW1vD+B24BbMNN43hgM/UHjC18tL4f0KzytcUtEY76cwG/i8i4HNON5hanrdzcFQZa2N7X7AmCLllGUz8e1o9rhuI3zvfvjrfLf19h1vymerqJrzWRhgo60rFkwEWljUIJZJMg9KcnsCA6mOWbPeYfGBGA/rh2rimr69uGMxccbjPG52D2CWGmGXKvBFhYeArX1KxUbe6K4VjPEUhVsU/iuPxdUZM7Z9fVf6uKhwlQnAuMTJ1nXB/z4EV9znbgT3HW+oXz6kJrVCLvE1s0wJck1gQ92IkNdk0z7XbYR6tN+amNbqxOLYXRodlxgvtqO2qdXPmo1u3SxUq4lzFo17K4wTQwOb22ZvdgeFmcCOFU+bhwrcpPANgYsxl74oTgOuzgo3esI+wGMYzv/d9AycozBNTCx4UZqxHRDFXjp8VGjlPRBq2V1BKZaISvQso/bhL6yAL/0ZbnvWnf85ZhBMm2iEvYuOkxZIlhUxxNc9aj50D/k7Z/ZJkUozh2Ppg0mSza3ofPtaHM9+wJ3A4BZdAwEuis67qL7vxQpfbuF9MxKTQPu3KJ6bhXr3uNs5IJpJHIRhMWxhbLcCtq2qLt0mA60WcbtXVsHtc43ISl2T45wNw9rIgAtRhdgGePhl0zZm5fpio7jHGNh/Qv5LokgFVJkXTXdHh7RPBznF0xaR6irJLMIIYzHdqQfT+hfficA3Bf7dcdV3tdLQNuFHwNPA3z01rq16jMcBM8UY3lVJxnZs1n1bhnhv48nmeaa/fwa+8Rd4eonRnXVN0PjoLPCJ/e1CCOohNNJbDG0rhYesvWAzuDu26ZT7q6FmtVOj4QJM9v86y+XfRLoWcCvukT5iwi37JHmL3RS7Ab/G0OE0bmxH0xSc1wpuci1QmltX+NvzcMbvDHugXThiO3j7lOJFCS492qSCBFs7kfaikxypRC0Zs9XsbW3leB+foPadGuoZx/RVTILOZd+vAfdiigAWKiyMVMwmYOK+b8a9DPlHwF3AQotlf+kaoxWTob8H+CfwgsJigfHRMe8DHJLXHaNp3EYAPxeYVmEY4e/APQLPAS8Ca4GJCpMEDgYOdKHiKRwddYf4QbOxHVyFt1E29LCuiw0fvYk+7TS0U0bC5cekd2XwmdwRT8pZ3Qki3ULJv/nec03w3CuwpOytJHC22h/zcuDzwHfjh57yct8W+LGaQgib+6+/mFYyp+V5wQrbO5zjbIEPRi+GvJDaicB31BSa2OBgTPz2pz7DCALXAueScn1l83vmC2LGxFbN+uvRDGJF4yAnYb9ySwWj713A/Hmvt+8hHTkAzjsYJo+odjqcF6YR6dUtTcoVTWQUwWTMOga4OugeTvVyh4f0b5ik9RWWwzEfeJvAhx3G7b2RAUvDGOALDuc3Q2D3ZkObgRuBXcQtRDGD5I4b9QL33esY0a0PYPciXSfwOWAfMZxoK488Huuu4Sin2MoZ6DWz7E6qCtQE3ren6QEmnmOSLqGHnm5n07xybWGHB21zTzGFoxSOt/W0ounySwV2dbXAgWJZRqrGmKfha7ZJPIHpAv9R4HhXA++zXTdKPn3Ewz0zB6Pf8McCqz8OvCkqM7bBOcDODWM7Mn6/lqkS85wgqS9cTlsCCAM64T27w8WHbeKo2gptlymxVUdqXU9NimnBAgarkAv55b0Fdlsr+XCfa7no3ZhpeBncD7xD7IRz3oSJ+TZjKPAhy3M7Ffh5yWOeIfBDy/vn38pcHzEc2LdhDG5RLMMUijxoufxZjYMcW2U/sRKdeGtjB1dOnk4MHZw7Da44Fgb18SfCrQ7NFnt6UiwrBOKrUs2m20fGtle2MIwwQE1WOu/6vyRwisdkz0WW45hUXXaM2vHuZwC/9HSrnI1dq/G9Mdn+otfnHRgVr7JYK/AvAq9YLHt8w9j2bdX0VSwVsRpE7Hft2lpl/TGD4NKj4JyDYGCf4rxh32EGeiEbQR3P2UbbwaEIZ3ULPdsjLZf7HHYPri2+jeGnWhkCi++2YEmIEXXxhbUC77Ypd9Ytve6aQzLsAY/H/CrwDYvj3Q7YtZOMel5f7awlR/EqRVZRjtuJHUf0N63Gq0zQDOkHB0yAK4+H8UPcjJ3me+hOzASxNC558ebOWnUx2A31aqQ3xVK1DAsd3Jx7uJWe7XEWY7FYTZLrcM+X6zfAZ3OW2R3DZpjvYmwxiZ/Vno/3cYx04fSc5Q4veH0+X8EjcbnAv6uhtmXeB51ULBZuM2VMSxgN6KTPFcfC5+6A+a/7P66Jw+CwyXD8TlF78k7/sWfNMaxW1XSO1vbk3YyOgzZ5lxIzxprgfapuHp9u7LeR5GroJlxyp/2LRVqnA2vH9DAVhvNa5dmq4ZXmLTMao5PaLsQLBiZFvNasa1rHcHWrwM15xlZgiuv1EbjNU/gg6fpdQ75i2z6dWbaiFXHDvIfs2J1M5dbFd8AjL5c3sGMHG8N65Paw8yjYYWTx2KzPwg/JqLRz5dmeNhWOmpJcAqwOMxhJWG9jHb78ZzcxGpfzr7oaTQS6lBeqLiOOnd/oHhB/H53yd9pYPyZNpagecYu5ROlOoMIIgWGYRJUt7qrwGt+l+cZ2dCewwbYCJ3Oap8kemFp6tZoyvezXYSq43vwheGKx0TdYvs783hF5aDUxjRvrauQFa7LpePp1mNDA5OEwdhCMHGhUrlzbuxR6sB0YBpqTYceRTZGlJ4x7O5nNvOJ2lu5KzovDwsvu6hCebGFl8Wi6P0bFTnSUxTg+XuGxLAc+ZZG47+t4fWZXeMyzbWYvqcY2TQG/aKWQq7pV8//71GDPsebjqwurj9CIOsZzi2q20sKOtu02ommeuFi0O89ru1RXltfEeTpZWMe9HYIzBa7RmNhLdYzFNVtS8SFdKf6vz6sVHu+rNjOczjRXXHtBJVJ3PEZtQdxyQ70FdC6tSJXLcj0tvp/ngKWx7dhoHgwoOFQbe8iz09nTjrlAgmxNhfu3CakM7iRF6JaSWfZWJkHa6bXZCqrkZdzFQgMYT63My14r31oNPptfas73NeGheDdWgUUW2x2LnWhL0rktzUs4dYP7eEXs/luE3XhUiU9ozj4Evs8mqpz0lFbmL6U9W1rhtLI3GF3JobNltTKXjD5v2o1nCq6GNi28pJZUL1/hCjEhBBXhz00/2XBb9wT+UfB+X0Q3N7YSKw0WeMVCcW3PCp/fAZgy4jyW1GXdaWLbSBNlLVIDnm9MHTShbFTaFN/rLRVUauGtqsciB8G0sekJEou0Xu9iDUb6r9kY4qkwIQmLesA9+ozj8e5CdYm/4/Kq16KqrVU9zRZ0Krwc0TiGSxs9wSQPr7eoWWm5suVCYu09IZaurT+G5yLnIv7bwxbHUaaD7MPAYXnGI2pI2K5r9FDsv4sFXrIg6R9LstxhWRxrcY8/Jd3stleLNENnpBC0JGpP3LKjLyIO3cqYr5ZU5bLpRKGWRR+u7AJfbAQfBRZZy5ehcRXQ3VCMdGFX06I3500BFUYJvA/77gZxzMQoP+WxAW7BbykpJQsLzsg55vPFv7HdnnyNXdiSM9tjwghLgJd93e8WIiDdRjNAK2itrSVeCmkhnJq0npnhi/cr3ccb35BCbF+u2f2tGricAjQuMU0LV1mMwbe60YRkpsUyUzHiMd7slZquEP0txvT/euJstxPj2S4gveVE6WlyWoucdlSk2QhXS865+jBmVfYkczHOeV0jtmhGqW5JsroWL1aQEtoTCWXSL2DaYyfte6ZmC2k3vNvrMa2qXbAeU4qbt95bgPMxAjJlMULh05bj/t0Enujtlvu5FPgrm4chiuJCjORjHp7EtNvpeWEEjJjE7Gh61UlJTVXNqUbSNhrXqjxisWATFPUUxWNSqsj2JSU0YGtwRYpxj8Wj4lq0rScwvaWS8GMsFKzU6MReCXzC8X75no2RVvhW1HPs6hK353A1nulB2EkxXpLw/UqBHymcbtFe5xZMO54nShzzIWqhnhVdy5/TQ1GL7te7gHUuoYEs3dUieq6UbJyYVO2WdhxZv7kYH5u/beO+8fEtzbPV8qEUXy+APMOvKbMeG01fB0O7ASOq/VrKYi9itFltxuvjGFGTQQ738h/FUmhGTS+xbxUUv9kJeMTS0IKRdUz9TcgX74+6J/xdjSB3EfwrbEHHSxvHFZgXF90xZpu3SOOCPpKkiKMlxcLF80gUFdVWxw4J6tClQirO3hcZ8w7JHgctMa7iOX4sjl1AbMY+YVa2DLgzITkWX+cbkm6Mm8frSAxd6hwsYoxsao9ii/PVtBt/j+UtNh4TDnhUjVyiDe7Oae3yisJ/WY7H0EhV61dsKeydts7hCncqXKsZMq9NuIjqS4Ur9WzBvDF+7fN1IRVQmKREwiXPoGg3oytVlfSzHVPxZHBt4sdF6H6O9+Yz5BclLMdBDFthfGSMXsFI7B2L4Z8OTFnln47NDfdQkwiar/BtNRqu28fEbfaOvMLfK7yocJZty3GB5WLRyyt6AS21jVkqnKzwuBou8znAfmyikE3ExMUvVhNzvRM3/d5HohdKVQ05WxKzJdZL/tMkd690TlIUiaWKY4VZ0XitWOrN2nqePo9VHRtCuoYGJEe426ZUVzzHjyWjoEXIFgzPq1KsK3UR/gc7Evx3BI5VOMphrIcA748+RJ0G0oze2QLTFCY7bH8icB5wnvqjKJ0qdj24Vii8R+AP6qZ7PU0dE+4Wbd1PqapHXCupXw0swLQXLh0jS5vqSQt1S23CEUp5T14KessuBkQrFuVxqmaT1iY51TKUkPaCqglzgN85CJqcCDxa0TO5BDjK1lusCF8U+IPDvXQ7OYmyio3YBkzfsDn0cNSa7utrSFBBatXUOU37VUvyV6vuElx1O3NXpLXEEYu2RbkvEPUbf9cKuoHI5sbzf3AzbqsFjpHN28S4nFdem/Q5wHHShnJTMW1yivQN+wl++4254HRM1+Gq2ha1LIzQ/Fg+isksFqZsJbWSdskwS86yRbaZ9WC6aPZatV0pyMbQnI6xlGQjqEVCsBUvHlf2Q7Nx14xrJsmczN8VONSXgH0pUNFl07AQU8l2oKRT0aowtN/HJNyKrv8FgbOkRRKMYl56x0YOYKWt5lvNRohPc24WWK0J02Bb7mNaCAHL1tOa8VvZCjXNmeZLBeELLRFuEGBAH3txmZqYNkK2LIe05JRkbH9wX/tz71Mrx+LISsblvGjXYxJMCwtettcEDhGTYa8Cj2OSXA9UbAS6xHSjPSuLjWGJ7wNvi2KoVR7z88ABwO/pRWh+hLuAmxSeLSrSrI6x3SJxUF/TT59xUHU0qi4UuXGD7Q3coD6mr1rRyj+bsT1iO/twxpjB1bM6UsZtLvBbLLiiZJf4vkfgJDZXxvKFxQLTxCTOllRwz96KKav9icfN3g3sJPBj8Tx9j3i9l2I6/j5OL0OSvzRP4ErVYgR9KjDO7TCuvjUc1FEkO37Oe4yBCUPs1t1vAgzrV+wFZUPBqglccIjdsRy+HQztV52GRs698iu2LOssihsFdhP4dAVGcSNGv3V7TAXZeg/bfEKM0tgxJSu7yJCN/AhG5/cuH1PwqDJsJzGt11fQC1FLuV9/XBP+nBWHEEfVLLXgeabF43w+lOK56CKplt8mLqkWSSqJptGTh8PH9083XA1MGArnHbypVbk2jZ+U4NbGsdNWMH3q5iGCZkweDt89NrvAouhL1KLo4dnIgHV5NorfAXYQQ5G8q2CCLA3LBS4AdhT4Iik6DjkxzusFThZTWHB3C+zH42K4skcI/MD1RRSFC76FaaU+nSb5S/y2xWl7gkw0Pb18EIaEvV0ZdXwXz04zDFgZvYYyXN4yBRhqyVeWnNitAus2wq8ehx/+A2YtMi3FG+gQ2Hdr+NSB8I6dTIdhW8aHFqSKLXgdvv03+NksWBczaX074OCJ8Pm3wLSJbs0wi8gnSnJxwgeiEAIt6Ep7cuThbaswSUz5qi9h7SkYKtqu0fa3jYzxYoX5YgoenhWTcLuxm8z2DgeOFNheYVsxxz1BYJ7Cgojl8TSGfvagp93+MY8bLbC/x/0lnbfm7H9ZlrHtiwmqf5WUqhh1LH4QR2GXKoytw0PrxdhKQaOctJ2NdXhhOTz4Ejz8kmnpPmYQ7DUW9hlvWrZ3iH2XX1uOa1pY5PW18PSr8OCLsGAZjBxgjmPqGBg7OLt6LK1lkDqIzkiyh3MVcC7lYrUB9himxjNFjKjV/d3gmHYHPhY5ivdjuMJ/A/YAPoqhsS1u9UFlGVuAMRiB4GOKNkCUjGXEoWqou3flVQ8arjYebhHPXC2KJaSNimpqsX/Nn5koRk/gdAr2CwsohLfoppDKM2LEcNqJvdV0x8h65m/EJD1pd8yWpmZ4X0gSqSnSeSGty6y2QMZH2iTF6FvDV/HrfUtJmcN2skGajnk1Jqb6SLB/bcsTd4c89iMRCwNMgvRvCcphv6FN4uF5eBCTefwZGe2FpYB6lo+pf16cl4Ltd8q02NaC2qtFdXDFQke4p7SUV0dVr1j44PsYXm1XsH9veEwXc5vEE3bTMFS+B7oTGyHp/v8T8OXIeygt5uxTStFWe0EduK0227EpIZaU40srIvBZUJHXHlxzvO+iFXpt6ln3B0wGf3WwM+2bdEg3qOSK8FqCFOO97e7x1ulwr/8MI5d2HukyctZJFi3euC+VwqU5rVTymki6JIvEUc4wbz9asPNulmetKeXJkrF9tShpFtrTgTnFo50F/AewJti91PvjaIF3A9uoCbPcnSNGswNwHEYSsUONPOSPMK2FUmlXaqrVGjhAo065Ysqmf9HsfWoU3xVTUv1QRrfdYzA85NUKs8VUlt2Xc9ojgHdGlWjbqaGp/cKSkbAHpqPyvhgFt4cV7ssRgD8YI3m5fTRe99DMEFFVl8/wuupXVHWdpqDe9Hdd01G3+Nhsq55zDGn705xj05z92xy3ljz/uuM4qcVvrtfN9bxckXVOOft8RlX/RVU7HO/jN8ynrvrNlLG9PmX5GRn32TcT1nlz7PenYt9/Krav3yasd3Ps9zMSfj+wrvp4xr3xJ1UdnXLe71fVRSnr3ayqYzPG7AsZ+7xBVUckrHNuyvK3quqQxnKubv/rYtqHzCCl0iVrWl90OpzX7kYsubSu4uNZoidaMgGnbWy/7pqMkgqPvYSg/EqMQPVtIU6bijdhCiWSxvI04M1s2cL8woztXaCtKZaYHnU83i3jXjgCwzppZj98UuEaNUyqpPWOi2ZDkxN+vk7hSxn7fHfkgceL0LdR+M+U5d8eeciF1XJWRcb2Eky7kUKJKK2QpqU5il7S9LtrfFJztBHEIWbsk2EhBfVyk9ghglufNi2RDEuLY6e82FRNueipmGaDG4NNTcURcdUvgZECpwisEHgv8JfYsp+KDFFj+Z+JERmf3tRk8c0Y1kceG8GFpaBNHSquix3HEuASgRPFvCC+3dQFeFkT7euK2P/vE/iomGabM2I7G6tbFoGcqKaKDTGSBe8T2Dkas+MbDIdI+H1G03g0jvXXYsIXbxd4Nao0/HXRMEL8M0hVP6mqz/uaNjZPH4uEFDRhG7bT4yqm9FnTd9/7qZcIAdQzxq9eUSihbhHqSdjnHFU9VVU7Q5ggN4RwRGwM/6GqB0S/JU2FF8XG+rMJv1/UdD22ir4/NPb9k7HlPxlb9sacMMLpse+vi30/P7af+GdvVX1TwvfXx9admRKaiJ/DCbGxujv2/YEp4/l4bJn+0fc7xb57pq56ZCPk2rx+mezhKoww8/uj5nTqmjCTgswCHH/ThFbjSnt7i/koGVbHsVHHdcSjF5undpYn6amblLw+iuFJBo82f3zvEHg5+u++apJK38dQoOLYqTHtFqPlm9Rp+OtiePdbeHSecXzs7/NJ1lt4JKVw5S2xv/894ff7miQzG1P8/o3zEVircKnCn5s/AkNj6x4Q/ft0I+mmJrF4G0bmoMO36O4GzEFMx1SRqM00VlI0a9Mq0MTRQGnGA6uWGrs+DKnmTMvLCOGkifdIyneS0wUjTRQni71QRq1NLdsTxf5+IMr43pFgLALScQwx9TOFT2CUwOI9wuI6bln0qHgp7uQc2eqNDnamQdkbqpsbtDsdznOCwoRY2XCa4ts9sb+3jf7dLzY+/TGKaVt8FLaJrXto7KRPBf7aFA9/klhYBuypX3mYjVGBvzD6dxtMt83cHlEu2glCuYaOro0R8dDBQTIoVT6rqcRCBEgc4sfiqTW9OBYsJM2gxBQrfJXNPasAO8wSmKom7nm+wuDIaNwjxsj8o8l7HJJxTw+P/XdZTmx2bZPOSjPiGnYrYspnK3VTAmqEQ+vy12MHMVDszqEhgr40dr++pnaKa+tif88V4xl/CtM9eLQakaKbxXjqt/huJ7EYo0V5BnCrwHrxMDXOYyJUoX2QplHg2qnCtYxZSpyPS2jEZ2NLLcFqsBiaJzCMgwuA54LdLPWCvgQzzY17dh+NTcsb2B/YOmETk8WwG4iVwmZdvBdjf09K+H1U7L/zY98/nBJSsAlrxgXe352y3AkJ5xAXKl8rcHjeh80TdQ1cEUlw3hT77syqevdsBP4IfBC4CEPPaZs4TJntqWUH4TIi2C5ty6VghZ16EHdvQwPQjRii+8nA1ZiKoIBi99iXYnSmRRitkwYaRnWBwMxo+cFqKGA7xJbbVU0HlwEx4/xAzn31eNP6R8b+PxXTEohY78PGelfFvv9KFDqKYygmJvrTZi9c4MrYf3+omwtoDcfEa/eNfXd1bN2ro/PfWuHyFKrZlSRLzn4Yk79qeMufia23tQ82gs1nd1X9paq+YpvIts2yl9lGkWKKusN2s9gP6pZ591L8kbVNX4wCT5taG7ENzlfVwYFRUPrz3th1XlBXvayu+mDsvrkstuw2qrqi6b6aXVd9OuFeOyi2XhobAVX9Q9O6f40+zUUGzcf9p6Zl/lBX/VbEMFgV+36uqk5uYgzc17TuwrrqQwnn8JmmfY5X1dWx319S1Wvrqpeq6h+b1j07tr+3xr5fpKrfUdU7Yt/9vLFsKy744IhicbWqvlDk+XSphNIClCgbY+5qTIsYM5fjLFMN51Ld1yJjW1fVx1T1i6q6azCS3j4/zLhflqvqdk2G6hhVfS3nPntX0z6yjO1UVV2Ssa3FzccQfSY0G+WUz9cS1p2cZFybPv+dMl4fsdjnP1V1ZGzMvpgzXvu30tjGS33fGhndVa30qFy8RrUo9S1rbOsFDXpWKWvR8cjykLV6z7ceeScXRw/mgGAgvX/OUdX5Tdf5IVU9NGX5CVF57aqmdZ6OcUhtjS2qOkVVb0gpm90559gvSPKs66qzVXV6Dsf4MlV9pWmfr0Wzpqx9bquqv0h4ScyKxjJpnekRx1abSpePiy+XJx5eFbaPAsfvwbQQ6RuPH2ubNFXVQ4t06SEcXVcpR/Gz3Ua4eT2G/3kl8L9U0Fk2YAuMBHYE5kWxWxvsrjBaDNXunpL7HwTsHF1710acz0Qc1r9G1WBLcaOE7RC183sgSqTZYiJGfOspy2rZoZgS4+dJEO1pl7Ft2IrxwFsxwefdo6D8CLqPVFu30nftzseQs0wdQ82Zg8k2345RUFoarnCAJa5TUzp8LabHXI9DZ5uf4RcxddA3YAjJ20WZymkKe4mhjPQniIW21cgWoKQ1vNcXo6z1/Zgqw+eAhWzOUQwISMMhatrXrIzoVpBQmdVjnuU2erZp6AD6YEjP44G9gF2AnRWmiJkO9Yt5v7UEOm5HhsaMpKyTpYOuDnUX0qTz6dKzUiykeBvL1Nlyel7LaVaMRVuvLKneWkIFdJcabuLrGL7k3GiaOCv6/zrMNDQocwW44nw1rc4beFBMt+EXgrENCAgI8ItdFMaJiTXP68kn8v8B+clqvtwnt5YAAAAASUVORK5CYII=" alt="Htech Soluções" /></span>
-    <a href="#form" class="btn btn-primary">Quero uma demonstração</a>
+    <a href="#form" class="btn btn-primary">Quero testar grátis</a>
   </div>
 </header>
-
-<!-- ============ HERO: vídeo + formulário ============ -->
-<section class="hero">
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow"><span class="dot"></span>Central de Conversas</span>
       <h1>Todo o atendimento da sua empresa <span class="hl">em uma só tela.</span></h1>
-      <p class="lead">WhatsApp, Instagram e Messenger reunidos na Central de Conversas da Htech. Toda a equipe atende pelo mesmo número, nenhum cliente fica sem resposta e você acompanha tudo de perto, no computador ou no celular.</p>
+      <p class="lead">WhatsApp, Instagram e Messenger reunidos na Central de Conversas da Htech. Toda a equipe atende pelo mesmo número, nenhum cliente fica sem resposta e você acompanha tudo de perto, no computador ou no celular. <strong style="color:#fff">Teste grátis por 7 dias.</strong></p>
 
       <div class="video" id="video" role="button" tabindex="0" aria-label="Assistir ao vídeo da Central de Conversas"></div>
 
@@ -513,9 +724,11 @@
 
     <!-- Formulário de lead -->
     <div class="form-card" id="form">
+      <div class="ribbon js-black" aria-hidden="true"><b>-33%</b><small>BLACK</small></div>
       <div class="form-head">
-        <h2>Veja a Central de Conversas funcionando</h2>
-        <p class="sub">Preencha em menos de 1 minuto. Um especialista da Htech chama você no WhatsApp para agendar uma demonstração gratuita.</p>
+        <span class="black-tag js-black"><span>BLACK FRIDAY</span><em>Até <strong>33% OFF</strong><i class="hide-sm"> nos planos</i></em></span>
+        <h2>Teste a Central de Conversas grátis por 7 dias</h2>
+        <p class="sub">Preencha em menos de 1 minuto. Um especialista da Htech chama você no WhatsApp para liberar seu teste grátis de 7 dias.</p>
       </div>
 
       <form id="leadForm" novalidate>
@@ -567,7 +780,6 @@
           <label>Também tem interesse em <span class="opt">(opcional)</span></label>
           <div class="chips multi">
             <input type="checkbox" id="a1" name="adicionais" value="CRM" /><label for="a1">CRM</label>
-            <input type="checkbox" id="a2" name="adicionais" value="Chatbot" /><label for="a2">Chatbot</label>
             <input type="checkbox" id="a3" name="adicionais" value="Agente de IA" /><label for="a3">Agente de IA</label>
           </div>
         </div>
@@ -581,7 +793,7 @@
         </label>
 
         <button type="submit" class="btn btn-primary" id="submitBtn">
-          <span class="spinner"></span><span class="label">Quero minha demonstração grátis</span>
+          <span class="spinner"></span><span class="label">Quero meu teste grátis de 7 dias</span>
         </button>
         <div class="form-msg" id="formMsg"></div>
         <div class="secure">
@@ -593,7 +805,7 @@
       <div class="success" aria-live="polite">
         <div class="ok"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1fae63" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
         <h2>Recebemos seus dados!</h2>
-        <p id="successText">Em breve um especialista da Htech vai falar com você pelo WhatsApp para agendar a demonstração.</p>
+        <p id="successText">Em breve um especialista da Htech vai falar com você pelo WhatsApp para liberar seu teste grátis de 7 dias.</p>
         <a href="#" class="btn btn-primary" id="successWa" style="display:none" target="_blank" rel="noopener">Falar agora no WhatsApp</a>
       </div>
     </div>
@@ -616,8 +828,8 @@
       <div><strong>Histórico completo</strong><small>Fica com a empresa, não com o celular</small></div>
     </div>
     <div class="item">
-      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
-      <div><strong>Relatórios</strong><small>Atendimentos e desempenho da equipe</small></div>
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="4"/><path d="M12 7V4M9 13h.01M15 13h.01"/></svg></div>
+      <div><strong>Chatbot incluso</strong><small>Responde na hora, até fora do horário</small></div>
     </div>
   </div>
 </div>
@@ -628,7 +840,7 @@
     <div class="sec-head reveal">
       <span class="tag">O problema</span>
       <h2>Seu atendimento ainda depende <span class="grad-text">de um celular só?</span></h2>
-      <p>Quando o WhatsApp da empresa fica em um aparelho, a equipe se atropela, mensagens se perdem e venda escapa sem ninguém perceber.</p>
+      <p>A falta de estrutura com certeza está custando faturamento à sua empresa: leads e oportunidades escapam por falta de atendimento ou de continuidade.</p>
     </div>
     <div class="compare">
       <div class="col before reveal">
@@ -638,6 +850,7 @@
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e5484d" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Cliente esperando horas, ou sem resposta nenhuma</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e5484d" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Instagram e Messenger esquecidos em outra aba</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e5484d" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Funcionário sai e leva o histórico de conversas junto</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e5484d" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Leads sem retorno e negociações que esfriam por falta de continuidade</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e5484d" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Nenhuma ideia de quantos atendimentos viram venda</li>
         </ul>
       </div>
@@ -648,9 +861,14 @@
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5AB0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Conversas distribuídas e transferidas entre setores</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5AB0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>WhatsApp, Instagram e Messenger na mesma tela</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5AB0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Histórico de cada cliente guardado na empresa</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5AB0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Chatbot incluso respondendo na hora, até fora do horário</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5AB0FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Relatórios de atendimento e desempenho da equipe</li>
         </ul>
       </div>
+    </div>
+    <div class="diff reveal">
+      <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+      <p>A Htech não te entrega apenas uma ferramenta: <strong>nós implantamos uma solução de vendas e atendimento no seu negócio</strong>, com trabalho a 4 mãos e personalizado.</p>
     </div>
   </div>
 </section>
@@ -660,24 +878,56 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="tag">Como funciona</span>
-      <h2>Organize o atendimento <span class="grad-text">em três passos</span></h2>
-      <p>A equipe da Htech acompanha a implantação do início ao fim.</p>
+      <h2>Do zero ao atendimento <span class="grad-text">em alta performance</span></h2>
+      <p>Você não precisa configurar nada sozinho: a equipe da Htech implanta tudo junto com você.</p>
     </div>
-    <div class="steps">
+    <div class="steps steps-4">
       <div class="step reveal">
         <div class="num">1</div>
-        <h3>Conecte seus canais</h3>
-        <p>O WhatsApp da empresa, o Instagram e o Messenger passam a chegar todos na Central.</p>
+        <h3>Criamos sua estrutura de atendentes</h3>
+        <p>Montamos os setores e os acessos de cada atendente de acordo com a rotina da sua empresa.</p>
       </div>
       <div class="step reveal">
         <div class="num">2</div>
-        <h3>Distribua entre a equipe</h3>
-        <p>Cada atendente entra com seu próprio acesso, pelo computador ou celular, e as conversas são divididas por setor.</p>
+        <h3>Conectamos seu WhatsApp</h3>
+        <p>Ligamos o WhatsApp da empresa à Central, para todas as conversas chegarem em um só lugar.</p>
       </div>
       <div class="step reveal">
         <div class="num">3</div>
-        <h3>Acompanhe tudo</h3>
-        <p>Veja quem está atendendo quem, o histórico de cada cliente e os relatórios da operação.</p>
+        <h3>Importamos seus contatos</h3>
+        <p>Trazemos sua base de contatos para a Central, e a equipe já começa com tudo à mão.</p>
+      </div>
+      <div class="step step-done reveal">
+        <div class="num"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Seu time já está apto a atender em alta performance</h3>
+        <p>Com tudo configurado, a equipe atende de forma organizada e nenhum cliente fica sem resposta.</p>
+      </div>
+    </div>
+
+    <div class="step-extra reveal">
+      <div class="ex-text">
+        <span class="ex-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>Passo extra</span>
+        <h3>Otimizamos seu atendimento com <span>automações</span></h3>
+        <p>Integramos a Central de Conversas aos <strong>sistemas externos que a sua empresa já usa</strong>, como ERP, plataformas de vendas, agendas e planilhas. Os dados circulam nos dois sentidos, sem retrabalho e sem ninguém digitar a mesma informação duas vezes.</p>
+        <ul class="ex-list">
+          <li><span class="ex-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></span><span><b>Trazemos dados para o atendimento:</b> cadastro do cliente, pedidos, cobranças e agendamentos aparecem na conversa.</span></li>
+          <li><span class="ex-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="m7 8 5-5 5 5"/><path d="M5 21h14"/></svg></span><span><b>Enviamos dados para os seus sistemas:</b> novos leads, contatos e informações do atendimento vão direto para onde você já trabalha.</span></li>
+        </ul>
+      </div>
+
+      <div class="ex-diagram" aria-hidden="true">
+        <div class="sys">
+          <span>ERP</span><span>Vendas</span><span>Agenda</span><span>Planilhas</span>
+          <small>Seus sistemas</small>
+        </div>
+        <div class="tracks">
+          <div class="track in"><i></i><em>dados entram</em></div>
+          <div class="track out"><i></i><em>dados saem</em></div>
+        </div>
+        <div class="hub">
+          <img src="data:image/png;base64,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" alt="" />
+          <strong>Central de<br/>Conversas</strong>
+        </div>
       </div>
     </div>
   </div>
@@ -689,6 +939,7 @@
     <div class="sec-head reveal">
       <span class="tag">Recursos</span>
       <h2>Tudo o que a sua equipe precisa <span class="grad-text">para atender melhor</span></h2>
+      <p>Tudo isto já vem na base da Central de Conversas, inclusive o Chatbot.</p>
     </div>
     <div class="features">
       <div class="feat reveal">
@@ -716,6 +967,25 @@
         <div><h3>Relatórios e métricas</h3><p>Quantidade de atendimentos e desempenho de cada atendente.</p></div>
       </div>
     </div>
+    <article class="addon botcard reveal">
+      <div class="body">
+        <span class="label">Incluso na base</span>
+        <h3>Chatbot</h3>
+        <p>Já vem com a Central de Conversas: atendimento automático 24h com menus e respostas programadas, sem deixar cliente esperando.</p>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Responde as dúvidas mais comuns na hora</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Direciona para o setor certo</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Transfere para um atendente quando precisar</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ninguém fica sem resposta fora do horário</li>
+        </ul>
+      </div>
+      <div class="demo" aria-hidden="true">
+        <div class="msg in float-a">Oi, qual o horário de vocês?</div>
+        <div class="msg out float-b"><span class="who">CHATBOT</span>Olá! Escolha uma opção:
+          <div class="opts"><span>Horários e endereço</span><span>Falar com vendas</span><span>Suporte</span></div>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -725,7 +995,7 @@
     <div class="sec-head reveal">
       <span class="tag">Adicionais</span>
       <h2>Leve seu atendimento para o próximo nível</h2>
-      <p>Comece pela Central de Conversas e some os adicionais quando fizer sentido para a sua empresa.</p>
+      <p>A Central de Conversas já vem com o Chatbot. Quando fizer sentido para a sua empresa, some o CRM e o Agente de IA.</p>
     </div>
 
     <div class="addons">
@@ -759,27 +1029,6 @@
         </div>
       </article>
 
-      <!-- Chatbot -->
-      <article class="addon reveal">
-        <div class="demo" aria-hidden="true">
-          <div class="msg in float-a">Oi, qual o horário de vocês?</div>
-          <div class="msg out float-b"><span class="who">CHATBOT</span>Olá! Escolha uma opção:
-            <div class="opts"><span>Horários e endereço</span><span>Falar com vendas</span><span>Suporte</span></div>
-          </div>
-        </div>
-        <div class="body">
-          <span class="label">Adicional</span>
-          <h3>Chatbot</h3>
-          <p>Atendimento automático 24h com menus e respostas programadas, sem deixar cliente esperando.</p>
-          <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Responde as dúvidas mais comuns na hora</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Direciona para o setor certo</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Transfere para um atendente quando precisar</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ninguém fica sem resposta fora do horário</li>
-          </ul>
-        </div>
-      </article>
-
       <!-- Agente de IA -->
       <article class="addon reveal">
         <div class="demo" aria-hidden="true">
@@ -803,7 +1052,7 @@
       </article>
     </div>
 
-    <p class="addons-note reveal">Quer algum desses junto? Marque no formulário e mostramos na demonstração. <a href="#form">Pedir demonstração →</a></p>
+    <p class="addons-note reveal">Quer algum deles junto? Marque no formulário e o especialista apresenta para você. <a href="#form">Começar teste grátis →</a></p>
   </div>
 </section>
 
@@ -813,11 +1062,11 @@
     <div class="sec-head reveal">
       <span class="tag">Chatbot ou Agente de IA?</span>
       <h2>Qual automação combina <span class="grad-text">com a sua empresa</span></h2>
-      <p>Os dois trabalham junto com a sua equipe na Central de Conversas. A diferença está em como conversam com o cliente.</p>
+      <p>O Chatbot já vem incluso na Central de Conversas e o Agente de IA é um adicional. Os dois trabalham junto com a sua equipe; a diferença está em como conversam com o cliente.</p>
     </div>
     <div class="vs">
       <div class="col reveal">
-        <h3>Chatbot</h3>
+        <h3>Chatbot <span class="tag-in">Incluso</span></h3>
         <p class="when">Ideal quando as dúvidas se repetem e o caminho é sempre parecido.</p>
         <ul>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Menus com opções numeradas ou botões</li>
@@ -826,7 +1075,7 @@
         </ul>
       </div>
       <div class="col ai reveal">
-        <h3>Agente de IA</h3>
+        <h3>Agente de IA <span class="tag-add">Adicional</span></h3>
         <p class="when">Ideal quando cada cliente pergunta de um jeito e você quer respostas mais humanas.</p>
         <ul>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Conversa livre, sem menus</li>
@@ -848,7 +1097,7 @@
     <div class="faq">
       <details class="reveal">
         <summary>Posso usar o número de WhatsApp que a empresa já tem?<span class="pm">+</span></summary>
-        <p>Na demonstração nossa equipe avalia o número que você usa hoje e orienta como conectá-lo à Central de Conversas.</p>
+        <p>Ao liberar seu teste grátis, nossa equipe avalia o número que você usa hoje e orienta como conectá-lo à Central de Conversas.</p>
       </details>
       <details class="reveal">
         <summary>Quantas pessoas podem atender ao mesmo tempo?<span class="pm">+</span></summary>
@@ -860,15 +1109,15 @@
       </details>
       <details class="reveal">
         <summary>Os adicionais são obrigatórios?<span class="pm">+</span></summary>
-        <p>Não. Você começa pela Central de Conversas e pode incluir o CRM, o Chatbot ou o Agente de IA quando quiser.</p>
+        <p>Não. A Central de Conversas já vem com o Chatbot, e você pode incluir o CRM ou o Agente de IA quando quiser.</p>
       </details>
       <details class="reveal">
         <summary>O Agente de IA substitui minha equipe?<span class="pm">+</span></summary>
         <p>Ele assume as conversas repetitivas e o atendimento fora do horário, e passa para um atendente humano sempre que necessário. A equipe fica livre para o que realmente precisa dela.</p>
       </details>
       <details class="reveal">
-        <summary>Como funciona a contratação?<span class="pm">+</span></summary>
-        <p>Depois que você preenche o formulário, um especialista agenda uma demonstração gratuita, entende a rotina da sua empresa e envia uma proposta sob medida.</p>
+        <summary>Como funciona o teste grátis?<span class="pm">+</span></summary>
+        <p>Depois que você preenche o formulário, um especialista libera o seu teste grátis de 7 dias e ajuda a configurar a Central para a rotina da sua empresa. No fim do período, você recebe uma proposta sob medida.</p>
       </details>
     </div>
   </div>
@@ -877,10 +1126,11 @@
 <!-- ============ CTA FINAL ============ -->
 <section class="final">
   <div class="wrap reveal">
+    <span class="black-tag js-black"><span>BLACK FRIDAY</span><em>Planos com <strong>até 33% de desconto</strong> neste mês</em></span>
     <h2>Pronto para nunca mais perder um cliente no WhatsApp?</h2>
-    <p>Agende uma demonstração gratuita da Central de Conversas e veja como fica o atendimento da sua empresa.</p>
+    <p>Teste a Central de Conversas grátis por 7 dias e garanta as condições de Black do mês.</p>
     <div class="actions">
-      <a href="#form" class="btn btn-primary">Quero uma demonstração</a>
+      <a href="#form" class="btn btn-primary">Quero testar grátis</a>
       <a href="#" class="btn btn-ghost" id="finalWa" style="display:none" target="_blank" rel="noopener">Falar no WhatsApp</a>
     </div>
   </div>
@@ -893,7 +1143,7 @@
   </div>
 </footer>
 
-<div class="mobile-cta" id="mobileCta"><a href="#form" class="btn btn-primary">Quero uma demonstração</a></div>
+<div class="mobile-cta" id="mobileCta"><a href="#form" class="btn btn-primary">Quero testar grátis<span class="off js-black">-33% BLACK</span></a></div>
 <a href="#" class="wa-float" id="waFloat" style="display:none" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
 </a>
@@ -914,6 +1164,11 @@ const CONFIG = {
   // Deixe vazio para esconder os botões de WhatsApp.
   WHATSAPP_NUMBER: "",
   WHATSAPP_TEXT: "Olá! Vim pelo anúncio e quero saber mais sobre a Central de Conversas.",
+
+  // Faixa de Black Friday: mude para false quando a campanha acabar
+  MOSTRAR_BLACK: true,
+  // Quando a promoção termina (a faixa some sozinha depois dessa data)
+  BLACK_FIM: "2026-11-30T23:59:59-03:00",
 
   // Identificação da origem, vai junto no payload
   ORIGEM: "landing-central-conversas",
@@ -944,6 +1199,25 @@ const CONFIG = {
   };
   box.addEventListener("click", load);
   box.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); load(); } });
+})();
+
+/* ---------- Black Friday ---------- */
+const blackAtiva = CONFIG.MOSTRAR_BLACK && Date.now() < new Date(CONFIG.BLACK_FIM).getTime();
+if (!blackAtiva) document.querySelectorAll(".js-black").forEach((el) => el.remove());
+else (function () {
+  const fim = new Date(CONFIG.BLACK_FIM).getTime();
+  const box = document.getElementById("bfCount"), out = document.getElementById("bfTime");
+  const p2 = (n) => String(n).padStart(2, "0");
+  function tick() {
+    let t = Math.max(0, Math.floor((fim - Date.now()) / 1000));
+    if (!t) { document.querySelectorAll(".js-black").forEach((el) => el.remove()); return; }
+    const d = Math.floor(t / 86400); t %= 86400;
+    const h = Math.floor(t / 3600); t %= 3600;
+    const seg = (v, l) => `<span class="seg"><b>${v}</b><i>${l}</i></span>`;
+    out.innerHTML = (d ? seg(d, "dias") : "") + seg(p2(h), "hrs") + seg(p2(Math.floor(t / 60)), "min") + seg(p2(t % 60), "seg");
+    box.hidden = false;
+  }
+  tick(); setInterval(tick, 1000);
 })();
 
 /* ---------- WhatsApp ---------- */
@@ -1049,6 +1323,7 @@ form.addEventListener("submit", async (e) => {
     consentimento_lgpd: true,
     produto: "Central de Conversas",
     origem: CONFIG.ORIGEM,
+    campanha: blackAtiva ? "black-friday" : "",
     ...tracking,
     fbp: getCookie("_fbp"),
     fbc: getCookie("_fbc"),
@@ -1078,14 +1353,14 @@ form.addEventListener("submit", async (e) => {
     msg.classList.add("show");
   } finally {
     btn.disabled = false; btn.classList.remove("sending");
-    btn.querySelector(".label").textContent = "Quero minha demonstração grátis";
+    btn.querySelector(".label").textContent = "Quero meu teste grátis de 7 dias";
   }
 });
 
 function showSuccess(nome) {
   const card = document.getElementById("form");
   if (nome) document.getElementById("successText").textContent =
-    `Obrigado, ${nome.split(" ")[0]}! Em breve um especialista da Htech vai falar com você pelo WhatsApp para agendar a demonstração.`;
+    `Obrigado, ${nome.split(" ")[0]}! Em breve um especialista da Htech vai falar com você pelo WhatsApp para liberar seu teste grátis de 7 dias.`;
   card.classList.add("done");
   card.scrollIntoView({ behavior: "smooth", block: "center" });
 }
