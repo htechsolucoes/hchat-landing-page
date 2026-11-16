@@ -1172,12 +1172,16 @@ src="https://www.facebook.com/tr?id=1356066516491480&ev=PageView&noscript=1"
    CONFIGURAÇÃO — altere só aqui
    ========================================================= */
 const CONFIG = {
-  // URL do webhook que recebe os leads (POST com JSON no body)
-  WEBHOOK_URL: "https://SEU-WEBHOOK-AQUI",
+  // Para onde o formulário envia os leads. "/api/lead" é a função do Vercel,
+  // que repassa para o webhook definido na variável de ambiente WEBHOOK_URL.
+  WEBHOOK_URL: "/api/lead",
 
-  // ID do vídeo do YouTube (a parte depois de "v=" no link)
-  // Ex.: https://www.youtube.com/watch?v=dQw4w9WgXcQ  ->  "dQw4w9WgXcQ"
+  // As configurações abaixo vêm do Vercel (variáveis de ambiente) pela função /api/config.
+
+  // ID do vídeo do YouTube: vem da variável YOUTUBE_ID do Vercel.
+  // Este valor só é usado se a página abrir fora do Vercel (ex.: arquivo no computador).
   YOUTUBE_ID: "",
+  CONFIG_URL: "/api/config",
 
   // WhatsApp comercial com DDI + DDD, só números (ex.: "5585999999999").
   // Deixe vazio para esconder os botões de WhatsApp.
@@ -1194,13 +1198,13 @@ const CONFIG = {
 };
 
 /* ---------- Vídeo do YouTube (carrega só ao clicar) ---------- */
-(function () {
+function initVideo(youtubeId) {
   const box = document.getElementById("video");
-  const id = (CONFIG.YOUTUBE_ID || "").trim();
+  const id = (youtubeId || "").trim();
   if (!id) {
     box.classList.add("placeholder");
     box.removeAttribute("role"); box.removeAttribute("tabindex");
-    box.innerHTML = "<p>Vídeo da Central de Conversas<br><small>(defina o YOUTUBE_ID na configuração)</small></p>";
+    box.innerHTML = "<p>Vídeo da Central de Conversas<br><small>(defina a variável YOUTUBE_ID no Vercel)</small></p>";
     return;
   }
   box.style.backgroundImage = `url(https://i.ytimg.com/vi/${id}/hqdefault.jpg)`;
@@ -1218,7 +1222,12 @@ const CONFIG = {
   };
   box.addEventListener("click", load);
   box.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); load(); } });
-})();
+}
+// Busca o ID do vídeo no Vercel; se não der, usa o valor do CONFIG
+fetch(CONFIG.CONFIG_URL, { cache: "no-store" })
+  .then((r) => (r.ok ? r.json() : {}))
+  .catch(() => ({}))
+  .then((cfg) => initVideo((cfg && cfg.youtubeId) || CONFIG.YOUTUBE_ID));
 
 /* ---------- Black Friday ---------- */
 const blackAtiva = CONFIG.MOSTRAR_BLACK && Date.now() < new Date(CONFIG.BLACK_FIM).getTime();
